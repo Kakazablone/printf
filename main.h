@@ -49,17 +49,17 @@ int print_int(va_list form, char buffer[], int flags,
 int write_unsgnd(int is_negative, int ind,
 		char buffer[],
 			int flags, int width, int precision, int size);
-nt print_unsigned(va_list form, char buffer[], int flags,
+int print_unsigned(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
 int print_binary(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
 int print_octal(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
-int print_hexadecimal(va_list form, char buffer[], int flags,
+int print_hexad(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
-int print_hexa(va_list form, char map_to[], char buffer[], int flags,
-		char flag_ch, int width, int precision, int size);
-int print_hexa_upper(va_list form, char buffer[], int flags,
+int print_hexad_u_l(va_list form, char map_to_sum[], char buffer[], int flags,
+		char flag_n, int width, int precision, int size);
+int print_hexad_up(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
 
 /* print char and strings function */
@@ -100,8 +100,8 @@ int write_num(int index, char buf[], int flags, int width, int precision,
 int write_number(int is_positive, int index, char buffer[], int flags,
 		int width, int precision, int size);
 int write_pointer(char buffer[], int index, int length, int width, int flags,
-		char padd, char extra_c, int padd_start);
-int write_unsgnd(int is_negative, int index, char buffer[], int flags,
+char padd, char extra_c, int padd_start);
+int write_nonsgnd(int is_negative, int index, char buffer[], int flags,
 		int width, int precision, int size);
 
 /* utilities */
@@ -109,6 +109,6 @@ int is_digit(char);
 int is_printable(char);
 int append_hexa_code(char, char[], int);
 long int convert_size_number(long int num, int size);
-long int convert_size_unsgnd(unsigned long int num, int size);
+long int convert_size_nonsgnd(unsigned long int num, int size);
 
 #endif

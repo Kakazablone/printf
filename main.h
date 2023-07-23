@@ -46,9 +46,6 @@ int handle_print(const char *frmt, int *i, va_list list, char buffer[],
 /* print numbers functions */
 int print_int(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
-int write_unsgnd(int is_negative, int ind,
-		char buffer[],
-			int flags, int width, int precision, int size);
 int print_unsigned(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
 int print_binary(va_list form, char buffer[], int flags,
@@ -100,7 +97,7 @@ int write_num(int index, char buf[], int flags, int width, int precision,
 int write_number(int is_positive, int index, char buffer[], int flags,
 		int width, int precision, int size);
 int write_pointer(char buffer[], int index, int length, int width, int flags,
-char padd, char extra_c, int padd_start);
+		char padd, char extra_c, int padd_start);
 int write_nonsgnd(int is_negative, int index, char buffer[], int flags,
 		int width, int precision, int size);
 

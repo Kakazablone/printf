@@ -27,7 +27,8 @@ struct frmt
  * @frm_t: associated function
  */
 typedef struct frmt frmt_t;
-int handle_print(const char *frmt, int *i, va_list list, char buffer[],
+
+int handle_print(const char *frmt, int *index, va_list list, char buffer[],
 		int flags, int width, int precision, int size);
 
 /* sizes */
@@ -90,7 +91,7 @@ int print_reverse(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
 
 /* width handler */
-int handle_write_char(char c, char buffer[], int flags, int width,
+int write_my_char(char c, char buffer[], int flags, int width,
 		int precision, int size);
 int write_num(int index, char buf[], int flags, int width, int precision,
 		int length, char padd, char extra_c);

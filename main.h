@@ -76,7 +76,7 @@ int print_non_printable(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
 
 /* handle other specifiers */
-int find_size(const char *format, int *i);
+int find_size(const char *format, int *z);
 int find_width(const char *format, int *i, va_list list);
 int find_flags(const char *format, int *i);
 int find_precision(const char *format, int *i, va_list list);

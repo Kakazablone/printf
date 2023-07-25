@@ -15,8 +15,8 @@
   *Return: the number of characters printed
   */
 
-int print_hexad(va_list form, char buffer[], int flags, int width, int size,
-		int precision)
+int print_hexad(va_list form, char buffer[], int flags, int width,
+		int precision, int size)
 {
 	return (print_hexad_u_l(form, "0123456789abcdef", buffer, flags, 'x',
 				width, precision, size));

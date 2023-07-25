@@ -1,4 +1,4 @@
-0x11. C - printf
+0x11. C - printf function
 
 This project is about to test the various concepts that myself and Dennis
 have been learning at ALX - SOFTWARE ENGINEERING COURSE.

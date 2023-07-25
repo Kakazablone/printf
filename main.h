@@ -16,19 +16,19 @@ int _printf(const char *format, ...);
  * @frmt: the format
  * @func: associated pointer function
  */
-struct frmt
+struct fmt
 {
-	char frmt;
-	int (*func)(va_list, char[], int, int, int, int);
+	char fmt;
+	int (*fn)(va_list, char[], int, int, int, int);
 };
 /**
- * typedef struct frmt frmt_t - struct operation
- * @frmt: The format
- * @frm_t: associated function
+ * typedef struct fmt fmt_t - struct operation
+ * @fmt: The format
+ * @fmt_t: associated function
  */
-typedef struct frmt frmt_t;
+typedef struct fmt fmt_t;
 
-int handle_print(const char *frmt, int *index, va_list list, char buffer[],
+int handle_print(const char *fmt, int *i, va_list list, char buffer[],
 		int flags, int width, int precision, int size);
 
 /* sizes */

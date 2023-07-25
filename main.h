@@ -55,7 +55,7 @@ int print_octal(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
 int print_hexad(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
-int print_hexad_u_l(va_list form, char map_to_sum[], char buffer[], int flags,
+int print_hexad_u_l(va_list form, char map_to_num[], char buffer[], int flags,
 		char flag_n, int width, int precision, int size);
 int print_hexad_up(va_list form, char buffer[], int flags,
 		int width, int precision, int size);
@@ -79,7 +79,7 @@ int print_non_printable(va_list form, char buffer[], int flags,
 /* handle other specifiers */
 int find_size(const char *format, int *z);
 int find_width(const char *format, int *i, va_list list);
-int find_flags(const char *format, int *i);
+int find_flags(const char *format, int *z);
 int find_precision(const char *format, int *i, va_list list);
 
 /* function to print string rot 13 */

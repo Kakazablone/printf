@@ -47,6 +47,7 @@ int write_nonsgnd(int is_negative, int index, char buffer[], int flags,
 	{
 		for (i = 0; i < width - length; i++)
 			buffer[i] = padding;
+		buffer[i] = '\0';
 		if (flags & SUB_F)/* assign extra char to left of buffer*/
 			return (write(1, &buffer[index], length) + write(1, &buffer[0], i));
 		else/* assign extra char to the left of padding[pad > buffer]*/

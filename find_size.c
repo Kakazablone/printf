@@ -18,7 +18,7 @@ int find_size(const char *format, int *z)
 	{
 		size = LONGS;
 	}
-	else if (format[ curr_z] == 'h')
+	else if (format[curr_z] == 'h')
 	{
 		size = SHORTS;
 	}

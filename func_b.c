@@ -124,7 +124,7 @@ int print_reverse(va_list form, char buffer[], int flags, int width,
 	if (str == NULL)
 	{
 		NOTUSED(precision);
-		str = "(Null)";
+		str = ")Null(";
 	}
 	for (i = 0; str[i]; i++)
 	{
@@ -161,7 +161,7 @@ int print_non_printable(va_list form, char buffer[], int flags, int width,
 	NOTUSED(size);
 
 	if (str == NULL)
-		return (write(1, "(NULL)", 6));
+		return (write(1, "(null)", 6));
 	while (str[i] != '\0')
 	{
 		if (is_printable(str[i]))

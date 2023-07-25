@@ -60,6 +60,12 @@ int print_string(va_list form, char buffer[], int flags, int width,
 			write(1, &str[0], length);
 			for (i = width - length; i > 0; i--)
 				write(1, " ", 1);
+			return (width);
+		}
+		else
+		{
+			for (i = width - length; i > 0; i--)
+				write(1, " ", 1);
 			write(1, &str[0], length);
 			return (width);
 		}

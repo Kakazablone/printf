@@ -18,8 +18,8 @@
 int print_hexad(va_list form, char buffer[], int flags, int width, int size,
 		int precision)
 {
-	return (print_hexad_u_l(form, "0123456789abcdef", buffer, flags,
-				width, precision, size, 'x'));
+	return (print_hexad_u_l(form, "0123456789abcdef", buffer, flags, 'x',
+				width, precision, size));
 }
 
 /**FUNCTION TO PRINT UNSIGNED NUMBER IN UPPER HEX**/

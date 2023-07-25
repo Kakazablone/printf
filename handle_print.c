@@ -26,31 +26,27 @@ int handle_print(const char *frmt, int *index, va_list list, char buffer[],
 		{'S', print_non_printable}, {'d', print_int}
 	};
 	for (i = 0; frmt_types[i].frmt != '\0'; i++)
-	{
 		if (frmt[*index] == frmt_types[i].frmt)
 			return (frmt_types[i].func(list, buffer, flags, width, precision, size));
 
-		if (frmt_types[i].frmt == '\0')
+	if (frmt_types[i].frmt == '\0')
+	{
+		if (frmt[*index] == '\0')
+			return (-1);
+		undef_length = undef_length + write(1, "%%", 1);
+		if (frmt[*index - 1] == ' ')
+			undef_length = undef_length + write(1, " ", 1);
+		else if (width)
 		{
-			if (frmt[*index] == '\0')
-				return (-1);
-			undef_length = undef_length + write(1, "%%", 1);
-			if (frmt[*index - 1] == ' ')
-				undef_length = undef_length + write(1, " ", 1);
-			else if (width)
-			{
+			--(*index);
+			while (frmt[*index] != ' ' && frmt[*index] != '%')
 				--(*index);
-				while (frmt[*index] != ' ' && frmt[*index] != '%')
-				{
-					--(*index);
-					if (frmt[*index] == ' ')
-						--(*index);
-					return (1);
-				}
-			}
-			undef_length = undef_length + write(1, &frmt[*index], 1);
-			return (undef_length);
+			if (frmt[*index] == ' ')
+				--(*index);
+			return (1);
 		}
+		undef_length = undef_length + write(1, &frmt[*index], 1);
+		return (undef_length);
 	}
 	return (printed_chars);
 }

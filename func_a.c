@@ -38,8 +38,8 @@ int print_hexad(va_list form, char buffer[], int flags, int width,
   *Return: number of characters printed
   */
 
-int print_hexad_up(va_list form, char buffer[], int width, int flags, int size,
-		int precision)
+int print_hexad_up(va_list form, char buffer[], int flags, int width,
+		int precision, int size)
 {
 	return (print_hexad_u_l(form, "0123456789ABCDEF", buffer, flags, 'X',
 				width, precision, size));

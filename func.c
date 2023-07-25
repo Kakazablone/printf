@@ -49,7 +49,7 @@ int print_string(va_list form, char buffer[], int flags, int width,
 		if (precision >= 6)
 			str = "      ";
 	}
-	while (str[lenght] != '\0')
+	while (str[length] != '\0')
 		length++;
 	if (precision >= 0 && precision < length)
 		length = precision;
@@ -123,7 +123,7 @@ int print_int(va_list form, char buffer[], int flags, int width,
 		num /= 10;
 	}
 	i++;
-	return (write_numbers(is_negative, i, buffer, flags, width, precision, size));
+	return (write_number(is_negative, i, buffer, flags, width, precision, size));
 }
 /*		PRINT BINARY		*/
 /**

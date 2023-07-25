@@ -30,7 +30,7 @@ int write_nonsgnd(int is_negative, int index, char buffer[], int flags,
 	NOTUSED(is_negative);
 	NOTUSED(size);
 
-	if (precision == 0 && ind == BUFFSIZE - 2 && buffer[index] == '0')
+	if (precision == 0 && index == BUFFSIZE - 2 && buffer[index] == '0')
 		return (0);/* printf(".0d", 0)no char is printed[buffer > pad*/
 
 	if (precision > 0 && precision < length)
@@ -185,9 +185,11 @@ int write_num(int index, char buffer[], int flags, int width,
 			buffer[i] = padd;
 		buffer[i] = '\0';
 		if (flags & SUB_F && padd == ' ')/*assign xtra char 2 left of buffer*/
+		{
 			if (extra_c)
 				buffer[--index] = extra_c;
 			return (write(1, &buffer[index], length) + write(1, &buffer[1], i - 1));
+		}
 		else if (!(flags && SUB_F) && padd == ' ')/*xtra char to left of buffer*/
 		{
 			if (extra_c)
@@ -199,7 +201,7 @@ int write_num(int index, char buffer[], int flags, int width,
 			if (extra_c)
 				buffer[--padd_start] = extra_c;
 			return (write(1, &buffer[padd_start], i - padd_start) + write
-					(1, &buffer_index, length - (1 - padd_start)));
+					(1, &buffer[index], length - (1 - padd_start)));
 		}
 	}
 	if (extra_c)

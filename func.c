@@ -17,7 +17,7 @@ int print_char(va_list form, char buffer[], int flags, int width,
 {
 	char c = va_arg(form, int);
 
-	return (handle_write_char(c, buffer, flags, width, precision, size));
+	return (write_my_char(c, buffer, flags, width, precision, size));
 }
 
 /*		PRINT A STRING		*/
@@ -33,7 +33,7 @@ int print_char(va_list form, char buffer[], int flags, int width,
  * Return: number of char printed
  */
 int print_string(va_list form, char buffer[], int flags, int width,
-		int precision, int size);
+		int precision, int size)
 {
 	int i, length = 0;
 	char *str = va_arg(form, char *);
@@ -78,7 +78,7 @@ int print_string(va_list form, char buffer[], int flags, int width,
  * Return: Number of chars to be printed
  */
 int print_percent(va_list form, char buffer[], int flags, int width,
-		int precision, int size);
+		int precision, int size)
 {
 	NOTUSED(form);
 	NOTUSED(buffer);
@@ -100,7 +100,7 @@ int print_percent(va_list form, char buffer[], int flags, int width,
  * Return: Number of char to be printed
  */
 int print_int(va_list form, char buffer[], int flags, int width,
-		int precision, int size);
+		int precision, int size)
 {
 	int is_negative = 0;
 	int i = BUFFSIZE - 2;
@@ -137,7 +137,7 @@ int print_int(va_list form, char buffer[], int flags, int width,
  * Return: number of char printed
  */
 int print_binary(va_list form, char buffer[], int flags, int width,
-		int precision, int size);
+		int precision, int size)
 {
 	int count;
 	unsigned int n, m, i, sum;

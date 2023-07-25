@@ -31,7 +31,7 @@ int print_pointer(va_list form, char buffer[], int flags, int width,
 	{
 		buffer[index--] = map_to[num_address % 16];
 		num_address /= 16;
-		lenght++;
+		length++;
 	}
 	if ((flags & ZERO_F) && !(flags & SUB_F))
 		padding = '0';
@@ -43,8 +43,9 @@ int print_pointer(va_list form, char buffer[], int flags, int width,
 	index++;
 	/* return (write(1, &buffer[i], BUFFSIZE - i - 1));*/
 	return (write_pointer(buffer, index, length, width, flags,
-				padd, xtra_c, padding_start));
+				padding, xtra_c, padding_start));
 }
+
 /*		PRINT A SRING IN ROT13		*/
 /**
  * print_rot13string - print string in rot 13
@@ -67,7 +68,7 @@ int print_rot13string(va_list form, char buffer[], int flags, int width,
 	char exit[] =
 "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	str = va_args(form, char *);
+	str = va_arg(form, char *);
 	NOTUSED(buffer);
 	NOTUSED(flags);
 	NOTUSED(width);

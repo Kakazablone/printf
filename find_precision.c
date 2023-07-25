@@ -15,7 +15,7 @@ int find_precision(const char *format, int *i, va_list list)
 	if (format[index] != '.')
 		return (precison);
 
-	precison = 0;
+	precision = 0;
 	for (index += 1; format[index] != '\0'; index++)
 	{
 		if (is_digit(format[index]))

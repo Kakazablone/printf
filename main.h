@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define BUFFZISE 1024
+#define BUFFSIZE 1024
 #define NOTUSED(x) (void)(x)
 
 /* prototypes */
@@ -38,7 +38,7 @@ int handle_print(const char *frmt, int *index, va_list list, char buffer[],
 /* flags */
 #define SUB_F 1
 #define ADD_F 2
-#define ZER0_F 4
+#define ZERO_F 4
 #define HASH_F 8
 #define BSPACE_F 16
 

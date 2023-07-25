@@ -21,7 +21,7 @@ int find_precision(const char *format, int *i, va_list list)
 		if (is_digit(format[index]))
 		{
 			precision *= 10;
-			precison += format[index] - '0';
+			precision += format[index] - '0';
 		}
 		else if (format[index] == '*')
 		{

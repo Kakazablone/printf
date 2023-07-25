@@ -93,12 +93,12 @@ int print_reverse(va_list form, char buffer[], int flags,
 /* width handler */
 int write_my_char(char c, char buffer[], int flags, int width,
 		int precision, int size);
-int write_num(int index, char buf[], int flags, int width, int precision,
+int write_num(int index, char buffer[], int flags, int width, int precision,
 		int length, char padd, char extra_c);
-int write_number(int is_positive, int index, char buffer[], int flags,
+int write_number(int is_negative, int index, char buffer[], int flags,
 		int width, int precision, int size);
 int write_pointer(char buffer[], int index, int length, int width, int flags,
-		char padd, char extra_c, int padd_start);
+		char padding, char xtra_c, int padd_start);
 int write_nonsgnd(int is_negative, int index, char buffer[], int flags,
 		int width, int precision, int size);
 

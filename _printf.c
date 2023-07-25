@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			print_buffer(buffer, &buff_index);
+			print_buffer(buffer, &buffer_index);
 			flags = find_flags(format, &i);
 			width = find_width(format, &i, list);
 			precision = find_precision(format, &i, list);

@@ -17,7 +17,7 @@ int handle_print(const char *frmt, int *index, va_list list, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	int i, undef_length = 0, printed_chars = -1;
-	frmt_t frmt_types[] = {
+	frmt_t frmt_form[] = {
 		{'c', print_char}, {'\0', NULL}, {'s', print_string},
 		{'r', print_reverse}, {'b', print_binary}, {'i', print_int},
 		{'X', print_hexad_up}, {'p', print_pointer},
@@ -25,11 +25,11 @@ int handle_print(const char *frmt, int *index, va_list list, char buffer[],
 		{'%', print_percent}, {'R', print_rot13string},
 		{'S', print_non_printable}, {'d', print_int}
 	};
-	for (i = 0; frmt_types[i].frmt != '\0'; i++)
-		if (frmt[*index] == frmt_types[i].frmt)
-			return (frmt_types[i].func(list, buffer, flags, width, precision, size));
+	for (i = 0; frmt_form[i].frmt != '\0'; i++)
+		if (frmt[*index] == frmt_form[i].frmt)
+			return (frmt_form[i].func(list, buffer, flags, width, precision, size));
 
-	if (frmt_types[i].frmt == '\0')
+	if (frmt_form[i].frmt == '\0')
 	{
 		if (frmt[*index] == '\0')
 			return (-1);

@@ -13,7 +13,7 @@ int find_precision(const char *format, int *i, va_list list)
 	int precision = -1;
 
 	if (format[index] != '.')
-		return (precison);
+		return (precision);
 
 	precision = 0;
 	for (index += 1; format[index] != '\0'; index++)

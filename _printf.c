@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			buffer[buffer_index++] = format[i];
-			if (buff_index == BUFFSIZE)
+			if (buffer_index == BUFFSIZE)
 			{
 				print_buffer(buffer, &buffer_index);
 			}

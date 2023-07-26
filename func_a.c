@@ -1,102 +1,88 @@
 #include "main.h"
 
-/**FUNCTION TO PRINT UNSIGNED NUMBER IN HEX**/
-
+/************** PRINT UNSIGNED NUMBER IN HEXADECIMAL **************/
 /**
-  *print_hexad - uses the hexadecimal notation to print unsigned number
-  *
-  *@buffer: temporary array to handle print
-  *@width: finds the width
-  *@precision: specifies the precision
-  *@size: specifies the size
-  *@flags: will calculate active flags
-  *@form: provides the list of arguements
-  *
-  *Return: the number of characters printed
-  */
-
-int print_hexad(va_list form, char buffer[], int flags, int width,
-		int precision, int size)
+ * print_hexadecimal - Prints an unsigned number in hexadecimal notation
+ * @types: Lista of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: get width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chars printed
+ */
+int print_hexadecimal(va_list types, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	return (print_hexad_u_l(form, "0123456789abcdef", buffer, flags, 'x',
-				width, precision, size));
+	return (print_hexa(types, "0123456789abcdef", buffer,
+		flags, 'x', width, precision, size));
 }
 
-/**FUNCTION TO PRINT UNSIGNED NUMBER IN UPPER HEX**/
-
+/************* PRINT UNSIGNED NUMBER IN UPPER HEXADECIMAL **************/
 /**
-  *print_hexad_up - uses the hexadecimal notation to print an unsigned
-  *number in upper hexadecimal notation
-  *
-  *@form: will provide the list of arguments
-  *@flags: will calculate active flags
-  *@width: find the width
-  *@size: specify the size required
-  *@precision: specifies the precision
-  *@buffer: temporary array to handle print
-  *
-  *Return: number of characters printed
-  */
-
-int print_hexad_up(va_list form, char buffer[], int flags, int width,
-		int precision, int size)
+ * print_hexa_upper - Prints an unsigned number in upper hexadecimal notation
+ * @types: Lista of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: get width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chars printed
+ */
+int print_hexa_upper(va_list types, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	return (print_hexad_u_l(form, "0123456789ABCDEF", buffer, flags, 'X',
-				width, precision, size));
+	return (print_hexa(types, "0123456789ABCDEF", buffer,
+		flags, 'X', width, precision, size));
 }
 
-/**FUNCTION TO PRINT A HEXADECIMAL NUMBER IN UPPER OR LOWERCASE**/
-
+/************** PRINT HEXX NUM IN LOWER OR UPPER **************/
 /**
-  *print_hexad_u_l - will print a hexadecimal number in lower or upper
-  *
-  *@form: provides the list of arguments to be used
-  *@buffer: temporary array to handle print
-  *@map_to_num: provides array of values to map the number to
-  *@flags: calculate the active flags
-  *@width: will find the width
-  *@precision: specifies the precision
-  *@size: specifies the size required
-  *@flag_n: calculates active flags
-  *@size: size specifier
-  *
-  *Return: printed characters number
-  */
-
-int print_hexad_u_l(va_list form, char map_to_num[], char buffer[], int flags,
-		char flag_n, int width, int precision, int size)
+ * print_hexa - Prints a hexadecimal number in lower or upper
+ * @types: Lista of arguments
+ * @map_to: Array of values to map the number to
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @flag_ch: Calculates active flags
+ * @width: get width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * @size: Size specification
+ * Return: Number of chars printed
+ */
+int print_hexa(va_list types, char map_to[], char buffer[],
+	int flags, char flag_ch, int width, int precision, int size)
 {
 	int i = BUFFSIZE - 2;
-	unsigned long int num = va_arg(form, unsigned long int);
-	unsigned long int start_num = num;
+	unsigned long int num = va_arg(types, unsigned long int);
+	unsigned long int init_num = num;
 
 	NOTUSED(width);
 
 	num = convert_size_nonsgnd(num, size);
 
 	if (num == 0)
-	{
 		buffer[i--] = '0';
-	}
+
 	buffer[BUFFSIZE - 1] = '\0';
 
 	while (num > 0)
 	{
-		buffer[i--] = map_to_num[num % 16];
-		num = num / 16;
+		buffer[i--] = map_to[num % 16];
+		num /= 16;
 	}
 
-	if (flags & HASH_F && start_num != 0)
+	if (flags & HASH_F && init_num != 0)
 	{
-		buffer[i--] = flag_n;
+		buffer[i--] = flag_ch;
 		buffer[i--] = '0';
 	}
+
 	i++;
 
 	return (write_nonsgnd(0, i, buffer, flags, width, precision, size));
 }
 
-/**FUNCTION TO PRINT AN UNSIGNED NUMBER**/
 
 /**
   *print_unsigned - will print an unsigned number

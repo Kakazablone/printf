@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 			buffer[buffer_index++] = format[i];
 			if (buffer_index == BUFFSIZE)
 			{
-				print_buffer(buffer, &buff_index);
+				print_buffer(buffer, &buffer_index);
 			}
 			/* write(1, &format[i], 1) */
 			printed_chars++;

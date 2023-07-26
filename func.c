@@ -17,7 +17,7 @@ int print_char(va_list form, char buffer[], int flags, int width,
 {
 	char c = va_arg(form, int);
 
-	return (write_my_char(c, buffer, flags, width, precision, size));
+	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
 
 /*		PRINT A STRING		*/

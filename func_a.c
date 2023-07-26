@@ -83,25 +83,22 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 	return (write_nonsgnd(0, i, buffer, flags, width, precision, size));
 }
 
-
+/************************* PRINT UNSIGNED NUMBER *************************/
 /**
-  *print_unsigned - will print an unsigned number
-  *
-  *@form: will provide the list of arguments
-  *@buffer: temporary array to handle print
-  *@flags: calculate active flags
-  *@width: specify the width
-  *@precision: gives specific precision
-  *@size: is a size specifier
-  *
-  *Return: number of printed chars
-  */
-
-int print_unsigned(va_list form, char buffer[], int flags, int width,
-		int precision, int size)
+ * print_unsigned - Prints an unsigned number
+ * @types: List a of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: get width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chars printed.
+ */
+int print_unsigned(va_list types, char buffer[],
+	int flags, int width, int precision, int size)
 {
 	int i = BUFFSIZE - 2;
-	unsigned long int num = va_arg(form, unsigned long int);
+	unsigned long int num = va_arg(types, unsigned long int);
 
 	num = convert_size_nonsgnd(num, size);
 
@@ -113,34 +110,32 @@ int print_unsigned(va_list form, char buffer[], int flags, int width,
 	while (num > 0)
 	{
 		buffer[i--] = (num % 10) + '0';
-		num = num / 10;
+		num /= 10;
 	}
+
 	i++;
 
 	return (write_nonsgnd(0, i, buffer, flags, width, precision, size));
 }
 
-/**FUNCTION TO PRINT AN UNSIGNED NUMBER IN OCTAL**/
-
+/************* PRINT UNSIGNED NUMBER IN OCTAL  ****************/
 /**
-  *print_octal - will print an unsigned number in octal notation
-  *
-  *@form: provides the list of arguments
-  *@buffer: a temporary array to handle print
-  *@flags: populates active flags
-  *@width: gets the width
-  *@precision: specifies the precision
-  *@size: gets the specific size
-  *
-  *Return: number of printed chars
-  */
-
-int print_octal(va_list form, char buffer[], int flags, int width,
-		int precision, int size)
+ * print_octal - Prints an unsigned number in octal notation
+ * @types: Lista of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: get width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chars printed
+ */
+int print_octal(va_list types, char buffer[],
+	int flags, int width, int precision, int size)
 {
+
 	int i = BUFFSIZE - 2;
-	unsigned long int num = va_arg(form, unsigned long int);
-	unsigned long int start_num = num;
+	unsigned long int num = va_arg(types, unsigned long int);
+	unsigned long int init_num = num;
 
 	NOTUSED(width);
 
@@ -154,11 +149,12 @@ int print_octal(va_list form, char buffer[], int flags, int width,
 	while (num > 0)
 	{
 		buffer[i--] = (num % 8) + '0';
-		num = num / 8;
+		num /= 8;
 	}
 
-	if (flags & HASH_F && start_num != 0)
+	if (flags & HASH_F && init_num != 0)
 		buffer[i--] = '0';
+
 	i++;
 
 	return (write_nonsgnd(0, i, buffer, flags, width, precision, size));
